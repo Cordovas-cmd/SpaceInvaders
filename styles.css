@@ -4,6 +4,7 @@
     border: 1px solid black;
     display: flex;
     flex-wrap: wrap;
+    
 }
 
 .grid div {
@@ -22,5 +23,9 @@
 }
 
 .laser {
-    background-color: orange;
+   background-color: blue;
+}
+
+.boom {
+   background-color: orange;
 }
