@@ -15,9 +15,10 @@ var start = document.querySelector(".start");
 
 
 
-song.addEventListener('loadeddata', () => {
-    let duration = audioElement.duration;
-});
+
+// song.addEventListener('loadeddata', () => {
+//     let duration = song.duration;
+// });
 
 // song.play();
 
