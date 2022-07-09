@@ -20,7 +20,7 @@ body {
 container {
     display: inherit;
     height:min-content;
-    transform:scale(2)
+    transform:scale(2.5)
 }
 audio {
     height:min-content;
