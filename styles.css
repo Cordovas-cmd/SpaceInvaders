@@ -22,13 +22,10 @@ header {
     width:100%;
     height: min-content;
     position: absolute;
-    justify-self: auto;
-    /* float: unset; */
-    grid-row-start: unset;
-    margin-left: 1080px;
     animation: change 5s infinite;
   text-shadow: 2px 2px 8px rgb(62, 10, 221);
   font-weight: bolder;
+  text-align:center;
 
 }
 container {
