@@ -12,14 +12,28 @@ body {
     display: grid;
     justify-content: center;
     background-size: auto;
-    align-items: center;
+    /* align-items: center; */
+    align-content: center;
    
   
 }
+header {
+    width:100%;
+    height: min-content;
+    position: absolute;
+    justify-self: auto;
+    /* float: unset; */
+    grid-row-start: unset;
+    margin-left: 1080px;
+    animation: change 5s infinite;
+  text-shadow: 2px 2px 8px rgb(62, 10, 221);
+  font-weight: bolder;
 
+}
 container {
     display: inherit;
     height:min-content;
+    justify-content: center;
     transform:scale(2.5)
 }
 audio {
@@ -64,8 +78,11 @@ background-image: url(./images/swordfish.png);
 }
 
 .results {
-    animation: mymove 5s infinite; /*mlsdkf 1.4s ease-in-out infinite;*/
-transition: 5s cubic-bezier(0,1.5,.5,1) ;
+  height: min-content;
+  padding: 0;
+  margin: 0;
+  animation: mymove 5s infinite; /*mlsdkf 1.4s ease-in-out infinite;*/
+  transition: 5s cubic-bezier(0,1.5,.5,1) ;
 /* animation:mlsdkf 1.4s ease-in-out infinite; */
 }
 
@@ -74,4 +91,12 @@ transition: 5s cubic-bezier(0,1.5,.5,1) ;
   to {color: rgb(13, 13, 127)}
   
 }
+.start {
+    width: 100%;
+}
 
+@keyframes change {
+    from {color: rgb(255, 0, 217)}
+    to {color: rgb(17, 144, 119)}
+    
+  }
