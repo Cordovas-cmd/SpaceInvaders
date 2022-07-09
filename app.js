@@ -11,6 +11,7 @@ let results = 0
 var sounds= new Array,
 explosion = new Audio("./sounds/explosion.wav");
 var song = new Audio("./songs/rcrs.mp3");
+song.volume = 0.5;
 var start = document.querySelector(".start");
 
 
