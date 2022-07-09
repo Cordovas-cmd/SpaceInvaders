@@ -5,6 +5,7 @@ const width = 15;
 let direction = 1;
 let invaderId;
 let goingRight = true;
+let aliensDestroyed = []
 
 for(let i = 0; i < 225; i++) {
     const square = document.createElement('div');
@@ -21,6 +22,8 @@ const alienInvaders = [
 
 function draw() {
     for(let i= 0; i < alienInvaders.length; i++) {
+        // if alien does not include one of the index of aliensDestroyed then draw.
+        if(!aliensDestroyed.includes(i))
         squares[alienInvaders[i]].classList.add('invader')
     }
 }
@@ -108,7 +111,11 @@ function shoot(e) {
             squares[currentLaserIndex].classList.remove('invader')
             squares[currentLaserIndex].classList.add('boom')
 
-          
+            setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 300)
+            clearInterval(laserId)
+
+            const alienDestroyed = alienInvaders.indexOf(currentLaserIndex)
+            aliensDestroyed.push(alienDestroyed)
         }
 
         }
