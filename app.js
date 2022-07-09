@@ -6,6 +6,7 @@ let direction = 1;
 let invaderId;
 let goingRight = true;
 let aliensDestroyed = []
+let results = 0
 
 for(let i = 0; i < 225; i++) {
     const square = document.createElement('div');
@@ -94,6 +95,12 @@ function moveInvaders() {
             clearInterval(invaderId)
         }
     }
+
+    if(aliensDestroyed.length === alienInvaders.length) {
+        resultDisplay.innerHTML = 'You saved the planet!!'
+        clearInterval(invaderId)
+
+    }
  }
 
 invaderId = setInterval(moveInvaders, 500)
@@ -116,6 +123,8 @@ function shoot(e) {
 
             const alienDestroyed = alienInvaders.indexOf(currentLaserIndex)
             aliensDestroyed.push(alienDestroyed)
+            results++
+            resultDisplay.innerHTML = results
         }
 
         }

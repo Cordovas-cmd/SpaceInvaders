@@ -10,6 +10,7 @@
 .grid div {
     width: 20px;
     height: 20px;
+    overflow:visible;
 }
 
 .invader {
@@ -18,8 +19,11 @@
 }
 
 .shooter {
-    background-color: red;
-    /* border-radius: 10px; */
+background-image: url(alien.png);
+/* background-size: 25px 20px; */
+object-fit: contain;
+
+
 }
 
 .laser {
