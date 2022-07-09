@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 const grid = document.querySelector('.grid');
 const resultDisplay = document.querySelector('.results')
 let currentShooterIndex = 202;
@@ -7,13 +8,33 @@ let invaderId;
 let goingRight = true;
 let aliensDestroyed = []
 let results = 0
+var sounds= new Array,
+explosion = new Audio("./sounds/explosion.wav");
+var song = new Audio("./songs/rcrs.mp3");
+var start = document.querySelector(".start");
+
+
+
+song.addEventListener('loadeddata', () => {
+    let duration = audioElement.duration;
+});
+
+// song.play();
+
+start.addEventListener('click', () => {
+    invaderId = setInterval(moveInvaders, 500)
+    song.play();
+    
+})
 
 for(let i = 0; i < 225; i++) {
     const square = document.createElement('div');
     grid.appendChild(square);
+    
 }
 
 const squares = Array.from(document.querySelectorAll('.grid div'))
+
 
 const alienInvaders = [
     0,1,2,3,4,5,6,7,8,9,
@@ -26,6 +47,7 @@ function draw() {
         // if alien does not include one of the index of aliensDestroyed then draw.
         if(!aliensDestroyed.includes(i))
         squares[alienInvaders[i]].classList.add('invader')
+        
     }
 }
 
@@ -34,15 +56,19 @@ draw()
 function remove() {
     for(let i= 0; i < alienInvaders.length; i++) {
         squares[alienInvaders[i]].classList.remove('invader')
+        
+        
     }
+   
 }
 
 squares[currentShooterIndex].classList.add('shooter')
 
 
+
 function moveShooter(e) {
     squares[currentShooterIndex].classList.remove('shooter')
-
+   
     // use modulus width
     switch(e.key) {
         case 'ArrowLeft':
@@ -53,8 +79,10 @@ function moveShooter(e) {
             break;
     }
     squares[currentShooterIndex].classList.add('shooter')
-
+  
 }
+
+
 document.addEventListener('keydown', moveShooter)
 
 function moveInvaders() {
@@ -103,7 +131,7 @@ function moveInvaders() {
     }
  }
 
-invaderId = setInterval(moveInvaders, 500)
+// invaderId = setInterval(moveInvaders, 500)
 
 function shoot(e) {
     let laserId;
@@ -117,22 +145,47 @@ function shoot(e) {
             squares[currentLaserIndex].classList.remove('laser')
             squares[currentLaserIndex].classList.remove('invader')
             squares[currentLaserIndex].classList.add('boom')
-
+            explosion.currentTime = 0;
+            if(squares[currentLaserIndex].classList.contains('boom')) {
+                playQueuedSounds();
+            }
+        
+           
+           
             setTimeout(() => squares[currentLaserIndex].classList.remove('boom'), 300)
             clearInterval(laserId)
 
             const alienDestroyed = alienInvaders.indexOf(currentLaserIndex)
             aliensDestroyed.push(alienDestroyed)
+            sounds.push(explosion)
+// console.log(sounds)
             results++
             resultDisplay.innerHTML = results
+          
+            // playQueuedSounds();
         }
-
-        }
+    }
         switch(e.key) {
             case 'ArrowUp':
                 laserId = setInterval(moveLaser, 100)
+                song.play()
         }
+        if(e.keyCode === 32) {
+            e.preventDefault();
+            laserId = setInterval(moveLaser, 100)
+            song.play()
+           }
+    }
+
+    function playQueuedSounds() {
+        if (sounds.length === 0) return;
+        var sound = sounds.pop(); // get last sound and remove it
+        sound.play();
+        sound.onended = function() { // go look at the queue again once current sound is finished
+            playQueuedSounds();
+            song.play();
+        };
     }
 
 
-document.addEventListener('keydown', shoot)
+document.addEventListener('keydown', shoot) })
