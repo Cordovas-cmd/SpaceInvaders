@@ -98,3 +98,7 @@ background-image: url(./images/swordfish.png);
     to {color: rgb(17, 144, 119)}
     
   }
+
+  .hide {
+    display: none;
+  }

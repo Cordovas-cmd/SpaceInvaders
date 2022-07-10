@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
 const grid = document.querySelector('.grid');
 const resultDisplay = document.querySelector('.results')
+const rules = document.querySelector('.rules');
 let currentShooterIndex = 202;
+
 const width = 15;
 let direction = 1;
 let invaderId;
@@ -115,18 +117,22 @@ function moveInvaders() {
     draw()
 
     if(squares[currentShooterIndex].classList.contains('invader', 'shooter')) {
+
         resultDisplay.innerHTML= 'GAME OVER'
+
         clearInterval(invaderId)
     }
 
     for(let i = 0; i < alienInvaders.length; i++) {
         if(alienInvaders[i] > squares.length) {
+            rules.classList.add('hide');
             resultDisplay.innerHTML = 'GAME OVER'
             clearInterval(invaderId)
         }
     }
 
     if(aliensDestroyed.length === alienInvaders.length) {
+        rules.classList.add('hide');
         resultDisplay.innerHTML = 'You saved the planet!!'
         clearInterval(invaderId)
 
@@ -139,6 +145,7 @@ function shoot(e) {
     let laserId;
     let currentLaserIndex = currentShooterIndex;
     function moveLaser() {
+       
         squares[currentLaserIndex].classList.remove('laser')
         currentLaserIndex -= width;
         squares[currentLaserIndex].classList.add('laser')
