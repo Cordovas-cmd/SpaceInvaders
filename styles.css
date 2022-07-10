@@ -54,7 +54,7 @@ audio {
 }
 
 .invader {
-    background-color: purple;
+   background-image: url(./images/Alienhead.png);
     border-radius: 10px;
 }
 
