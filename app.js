@@ -198,3 +198,19 @@ function shoot(e) {
 
 
 document.addEventListener('keydown', shoot) })
+
+// future have to fix the laser index
+
+
+// want to add levels.
+
+// need to have a background that changes 
+
+// different enemy attack patterns and different enemies
+
+// different music and tracks
+
+// need speed and difficulty to increase
+
+
+// would like to add power ups.
